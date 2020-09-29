@@ -10,7 +10,7 @@ Installation
 
 Clone the repository
 
-    git clone git@github.com:dbrumann/product-api.git
+    git clone git@github.com:ktteam-test-work/test-work.git
 
     Install dependencies
 

@@ -1,8 +1,6 @@
 # test-work
 
-<b>Test Work</b>
-
-Task API
+<b>Tasks</b>
 
 This is a test application for Symfony 4 & Flex showcasing an API for interacting with a task and user catalog.
 

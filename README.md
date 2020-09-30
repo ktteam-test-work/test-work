@@ -14,7 +14,9 @@ Installation
 
 2. Install dependencies
 
+    ```
     composer install
+    ```
 
 3. Setup database
 

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <script
+                    src="https://code.jquery.com/jquery-3.3.1.min.js"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                    crossorigin="anonymous"></script>
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+                  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                    crossorigin="anonymous"></script>
+
+            <!-- jQuery - DatePicker.js -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.9/datepicker.min.js"
+                    crossorigin="anonymous"></script>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.9/datepicker.min.css"
+                  crossorigin="anonymous">
+
+            <style>
+                .mt10 {
+                    margin-top: 10px;
+                }
+                .table-task-wrap,
+                .table-user-wrap {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .filter-block {
+                    display: flex;
+                    justify-content: center;
+                    margin: 30px 0;
+                }
+
+                .filter-block form {
+                    border: 1px solid #cccccc;
+                    border-radius: 10px;
+                    padding: 20px;
+                }
+
+                .buttons-row {
+                    display: flex;
+                    justify-content: center;
+                    padding: 0 15px;
+                }
+
+                #search_form_submit {
+                    margin-right: 30px;
+                }
+
+                .align-selector {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .header-tasks,
+                .header-filter,
+                .header-users {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 20px;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                .remove-task,
+                .edit-task,
+                .remove-user,
+                .edit-user {
+                    font-size: 20px;
+                    vertical-align: middle !important;
+                }
+
+                .remove-task,
+                .edit-task,
+                .remove-user,
+                .edit-user {
+                    color: #999;
+                }
+
+                .remove-task:hover,
+                .edit-task:hover,
+                .remove-user:hover,
+                .edit-user:hover {
+                    color: #ccc;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+                .table-task-wrap tr th,
+                .table-task-wrap tr td,
+                .table-user-wrap tr th,
+                .table-user-wrap tr td {
+                    border: 1px solid #cccccc;
+                }
+
+                .add-task,
+                .add-user,
+                .users_list {
+                    text-align: center;
+                    margin-bottom: 25px;
+                }
+
+                a {
+                    color: #55b055;
+                }
+
+                .task,
+                .user {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .task-wrap,
+                .user-wrap {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 50px;
+                }
+
+                .user-wrap form {
+                    width: 50%;
+                }
+
+                .task > div,
+                .user > div {
+                    width: 100%;
+                    display: flex;
+                    margin-bottom: 20px;
+                    align-items: center;
+                }
+
+                .task > div > label,
+                .user > div > label {
+                    margin-right: 10px;
+                }
+
+                #task_title,
+                #task_body,
+                #task_user,
+                #user_alias,
+                #user_firstname,
+                #user_lastname {
+                    flex-grow: 1;
+                }
+
+                .pagination-block {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            </style>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,41 @@
+fos_elastica:
+  clients:
+    default: { host: localhost, port: 9200 }
+  indexes:
+    task_test:
+      types:
+        task_test:
+          properties:
+            id:
+              type: integer
+            title: ~
+            body : ~
+            user:
+              type: integer
+            created_at:
+              type: date
+          persistence:
+            driver: orm
+            model: App\Entity\Task
+            provider: ~
+            finder: ~
+    user_test:
+      types:
+        user_test:
+          properties:
+            id:
+              type: integer
+            alias: ~
+            firstname : ~
+            lastname: ~
+          persistence:
+            driver: orm
+            model: App\Entity\User
+            provider: ~
+            finder: ~
+services:
+  App\Service\ElasticsearchService:
+    arguments:
+      $transformedFinder: '@fos_elastica.finder.task_test.task_test'
+  FOS\ElasticaBundle\Finder\TransformedFinder:
+    alias: 'fos_elastica.finder.task_test.task_test'

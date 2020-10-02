@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <div class="table-user-wrap">
+        <div class="mt10 col-xs-6 col-md-11 col-lg-11">
+            <div class="header-users">Пользователи</div>
+            <div class="add-user"><a class="btn btn-success" href="{{ path('new_user_post') }}">Создать пользователя</a></div>
+            {% if pagination.getItems()|length > 0 %}
+                <table class="table">
+                    <tr>
+                        <th>alias</th>
+                        <th>firstname</th>
+                        <th>lastname</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    {% for user in pagination.getItems() %}
+                        <tr>
+                            <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.alias }}</a></td>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td><a class="edit-user" title="Редактировать" href="{{ path('user_edit', {'id': user.id}) }}">✔</a></td>
+                            <td><a class="remove-user" title="Удалить" href="{{ path('user_delete', {'id': user.id}) }}">&#10006;</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                Пользователей нет.
+            {% endif %}
+        </div>
+    </div>
+    <div class="pagination-block">
+        <div>
+            -------------------------------------------------------------------------
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index Page{% endblock %}
+
+{% block body %}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#search_form_date_start').datepicker();
+            $('#search_form_date_end').datepicker();
+        })
+    </script>
+
+    <div class="filter-block">
+        {{ form_start(searchForm) }}
+        <div class="header-filter">Фильтр</div>
+        <div class="row">
+            <div class="date-start-wrap col-xs-6">
+                {{ form_row(searchForm.date_start, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="date-end-wrap col-xs-6">
+                {{ form_row(searchForm.date_end, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="row align-selector">
+            <div class="col-xs-6 ">
+                {{ form_row(searchForm.user, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="row buttons-row">
+            <div class="mt10 button">
+                {{ form_row(searchForm.submit, { 'attr': {'class': 'btn btn-success fl'} }) }}
+            </div>
+            <div class="mt10">
+                <a href="{{ path("index") }}" type="reset" class="btn btn-success">Reset</a>
+            </div>
+        </div>
+        {{ form_end(searchForm) }}
+    </div>
+
+    <div class="table-task-wrap">
+        <div class="mt10 col-xs-6 col-md-11 col-lg-11">
+            <div class="header-tasks">Задачи</div>
+            <div class="add-task"><a class="btn btn-success" href="{{ path('new_task_post') }}">Создать задачу</a></div>
+            <div class="users_list"><a class="btn btn-success" href="{{ path('users_index') }}">Пользователи</a></div>
+            {% if pagination.getItems()|length > 0 %}
+                <table class="table">
+                    <tr>
+                        <th>title</th>
+                        <th>body</th>
+                        <th>created_at</th>
+                        <th>user</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                {% for task in pagination.getItems() %}
+                        <tr>
+                            <td><a href="{{ path('task_show', {'id': task.id}) }}">{{ task.title }}</a></td>
+                            <td>{{ task.body }}</td>
+                            <td>{{ task.getCreatedAt().getTimestamp|date('Y-m-d H:i:s') }}</td>
+                            <td>{% if task.user.getId() is defined %}<a href="{{ path('user_show', {'id': task.user.getId()}) }}">{{ task.user }}</a>{% endif %}</td>
+                            <td><a class="edit-task" title="Редактировать" href="{{ path('task_edit', {'id': task.id}) }}">✔</a></td>
+                            <td><a class="remove-task" title="Удалить" href="{{ path('task_delete', {'id': task.id}) }}">&#10006;</a></td>
+                        </tr>
+                {% endfor %}
+                </table>
+            {% else %}
+                Результаты не найдены.
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="pagination-block">
+        <div>
+            -------------------------------------------------------------------------
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}
